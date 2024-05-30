@@ -80,7 +80,6 @@ namespace chili
 int main()
 {
 	std::ifstream in("dingo.txt");
-	in.seekg(7);
 
 	if (!in)
 	{
@@ -90,7 +89,8 @@ int main()
 		return -1;
 	}
 
-	in.seekg(7);
+	in.seekg(44);
+	in.seekg(-43,std::ios::cur);
 
 	for(char c = in.get(); in.good(); c = in.get())
 	{

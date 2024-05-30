@@ -80,6 +80,8 @@ namespace chili
 int main()
 {
 	std::ifstream in("dingo.txt");
+	in.seekg(7);
+
 	if (!in)
 	{
 		chili::print("\nFailed to open.");
@@ -87,6 +89,8 @@ int main()
 		while (!_kbhit());
 		return -1;
 	}
+
+	in.seekg(7);
 
 	for(char c = in.get(); in.good(); c = in.get())
 	{

@@ -89,8 +89,16 @@ int main()
 		return -1;
 	}
 
-	in.seekg(44);
-	in.seekg(-43,std::ios::cur);
+	in.seekg(0, std::ios_base::end);
+	const int length = in.tellg();
+
+	chili::print("\nFile size: ");
+	char buffer[256];
+	chili::int2str(length, buffer, 256);
+	chili::print(buffer);
+	chili::print("\n");
+
+	in.seekg(0, std::ios_base::beg);
 
 	for(char c = in.get(); in.good(); c = in.get())
 	{

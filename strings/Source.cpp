@@ -79,20 +79,10 @@ namespace chili
 }
 int main()
 {
-	/*std::ofstream out("putty.txt", std::ios::binary);
-	const int num = 16519;
-
-	out.write(reinterpret_cast<const char*>(&num), sizeof(int));*/
-
-	std::ifstream in("putty.txt", std::ios::binary);
-
-	int data;
-	in.read(reinterpret_cast<char*>(&data), sizeof(int));
-
-	char buffer[256];
-	chili::int2str(data, buffer, 256);
-	chili::print(buffer);
-
+	using namespace chili;
+	std::ifstream in("HW4.txt", std::ios::binary);
+	
+	print("\nAdd a name.");
 	while (!_kbhit());
 	return 0;
 }

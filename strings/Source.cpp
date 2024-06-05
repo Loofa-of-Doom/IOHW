@@ -79,52 +79,19 @@ namespace chili
 }
 int main()
 {
-	std::ifstream in("dingo.txt");
+	/*std::ofstream out("putty.txt", std::ios::binary);
+	const int num = 16519;
 
-	if (!in)
-	{
-		chili::print("\nFailed to open.");
+	out.write(reinterpret_cast<const char*>(&num), sizeof(int));*/
 
-		while (!_kbhit());
-		return -1;
-	}
+	std::ifstream in("putty.txt", std::ios::binary);
 
-	in.seekg(0, std::ios_base::end);
-	const int length = in.tellg();
+	int data;
+	in.read(reinterpret_cast<char*>(&data), sizeof(int));
 
-	chili::print("\nFile size: ");
 	char buffer[256];
-	chili::int2str(length, buffer, 256);
+	chili::int2str(data, buffer, 256);
 	chili::print(buffer);
-	chili::print("\n");
-
-	in.seekg(0, std::ios_base::beg);
-
-	for(char c = in.get(); in.good(); c = in.get())
-	{
-		_putch(c);
-	}
-
-	if (in.bad())
-	{
-		chili::print("\nMucked Up!");
-	}
-	else if (in.eof())
-	{
-		chili::print("\nEnd of the file.");
-	}
-	else
-	{
-		chili::print("\nSome other kind of error.");
-	}
-
-	std::ofstream out("out.txt");
-
-	for (char c = _getch(); c != 13; c = _getch())
-	{
-		_putch(c);
-		out.put(c);
-	}
 
 	while (!_kbhit());
 	return 0;

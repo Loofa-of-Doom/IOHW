@@ -115,6 +115,11 @@ int main()
 	char c = _getch();
 	while (c != 'q')
 	{
+		//Checks to see if one of the given options were chosen
+		while ((c != 'l') && (c != 's') && (c != 'a') && (c != 'q') && (c != 'p'))
+		{
+			c = _getch();
+		}
 		switch (c)
 		{
 		case 'a':

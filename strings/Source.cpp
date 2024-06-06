@@ -78,6 +78,14 @@ namespace chili
 		*buf = 0;
 		strrev(pStart);
 	}
+	void output2file(const char* string, std::ofstream& out)
+	{
+		for (; *string != 0; string++)
+		{
+			char c = *string;
+			out.put(c);
+		}
+	}
 }
 int main()
 {
@@ -85,6 +93,8 @@ int main()
 
 	std::ofstream out("ppl1.txt", std::ios::binary);
 	std::ifstream in("ppl1.txt", std::ios::binary);
+
+
 
 	print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	while (_getch() != 'q')
@@ -98,6 +108,7 @@ int main()
 				out.put(c);
 			}
 			out.put('\n');
+			output2file("Value: ", out);
 			print("\n");
 			print("Enter a integer value associated with this name.\n");
 			for (char c = _getch(); c != 13; c = _getch())

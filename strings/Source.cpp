@@ -86,6 +86,21 @@ namespace chili
 			out.put(c);
 		}
 	}
+	void names2console(std::ifstream& in)
+	{
+		in.seekg(1);
+		int cursorPos = in.tellg();
+		char test = in.get();
+
+		for (char c = in.get(); in.get() != 10; c = in.get())
+		{
+			_putch(c);
+		}
+	}
+	/*bool findValue(std::ifstream& in)
+	{
+
+	}*/
 }
 int main()
 {
@@ -96,12 +111,12 @@ int main()
 
 
 
-	print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+	print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	while (_getch() != 'q')
 	{
 		if (_getch() == 'a')
 		{
-			print("Enter a name.\n");
+			print("\nEnter a name.\n");
 			for (char c = _getch(); c != 13; c = _getch())
 			{
 				_putch(c);
@@ -110,7 +125,7 @@ int main()
 			out.put('\n');
 			output2file("Value: ", out);
 			print("\n");
-			print("Enter a integer value associated with this name.\n");
+			print("\nEnter a integer value associated with this name.\n");
 			for (char c = _getch(); c != 13; c = _getch())
 			{
 				_putch(c);
@@ -119,11 +134,11 @@ int main()
 			out.put('\n');
 			out.put('\n');
 			print("\n\n");
-			print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 		}
 		if (_getch() == 'p')
 		{
-
+			names2console(in);
 		}
 	}
 	return 0;

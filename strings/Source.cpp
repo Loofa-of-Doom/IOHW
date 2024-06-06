@@ -112,34 +112,43 @@ int main()
 
 	print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	
-	if (_getch() == 'a')
+	char c = _getch();
+	while (c != 'q')
 	{
-		print("\nEnter a name.\n");
-		for (char c = _getch(); c != 13; c = _getch())
+		switch (c)
 		{
-			_putch(c);
-			out.put(c);
+		case 'a':
+			print("\nEnter a name.\n");
+			for (char c = _getch(); c != 13; c = _getch())
+			{
+				_putch(c);
+				out.put(c);
+			}
+			out.put('\n');
+			output2file("Value: ", out);
+			print("\n");
+			print("\nEnter a integer value associated with this name.\n");
+			for (char c = _getch(); c != 13; c = _getch())
+			{
+				_putch(c);
+				out.put(c);
+			}
+			out.put('\n');
+			out.put('\n');
+			print("\n\n");
+			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			c = _getch();
+			break;
+		case 'p':
+			name2console(in, out);
+			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			c = _getch();
+			break;
+		case'q':
+			break;
 		}
-		out.put('\n');
-		output2file("Value: ", out);
-		print("\n");
-		print("\nEnter a integer value associated with this name.\n");
-		for (char c = _getch(); c != 13; c = _getch())
-		{
-			_putch(c);
-			out.put(c);
-		}
-		out.put('\n');
-		out.put('\n');
-		print("\n\n");
-		print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
-	}
-	if (_getch() == 'p')
-	{
-		name2console(in,out);
 	}
 
-	//Closes Application
-	while (!_kbhit() || _getch() != 'q');
+	
 	return 0;
 }

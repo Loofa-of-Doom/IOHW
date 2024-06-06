@@ -86,13 +86,14 @@ namespace chili
 			out.put(c);
 		}
 	}
-	void names2console(std::ifstream& in)
-	{
-		in.seekg(1);
-		int cursorPos = in.tellg();
-		char test = in.get();
+	void names2console(std::ifstream& in, std::ofstream& out)
+	{	
+		out.flush();
+		in.seekg(0);
+		/*int cursorPos = in.tellg();
+		char test = in.get();*/
 
-		for (char c = in.get(); in.get() != 10; c = in.get())
+		for (char c = in.get(); c > 64 && c < 123; c = in.get())
 		{
 			_putch(c);
 		}
@@ -138,7 +139,7 @@ int main()
 		}
 		if (_getch() == 'p')
 		{
-			names2console(in);
+			names2console(in,out);
 		}
 	}
 	return 0;

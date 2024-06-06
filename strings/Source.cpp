@@ -86,10 +86,10 @@ namespace chili
 			out.put(c);
 		}
 	}
-	void names2console(std::ifstream& in, std::ofstream& out)
+	void name2console(std::ifstream& in, std::ofstream& out)
 	{	
 		out.flush();
-		in.seekg(0);
+		//in.seekg(0);
 		/*int cursorPos = in.tellg();
 		char test = in.get();*/
 
@@ -110,37 +110,36 @@ int main()
 	std::ofstream out("ppl1.txt", std::ios::binary);
 	std::ifstream in("ppl1.txt", std::ios::binary);
 
-
-
 	print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
-	while (_getch() != 'q')
+	
+	if (_getch() == 'a')
 	{
-		if (_getch() == 'a')
+		print("\nEnter a name.\n");
+		for (char c = _getch(); c != 13; c = _getch())
 		{
-			print("\nEnter a name.\n");
-			for (char c = _getch(); c != 13; c = _getch())
-			{
-				_putch(c);
-				out.put(c);
-			}
-			out.put('\n');
-			output2file("Value: ", out);
-			print("\n");
-			print("\nEnter a integer value associated with this name.\n");
-			for (char c = _getch(); c != 13; c = _getch())
-			{
-				_putch(c);
-				out.put(c);
-			}
-			out.put('\n');
-			out.put('\n');
-			print("\n\n");
-			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			_putch(c);
+			out.put(c);
 		}
-		if (_getch() == 'p')
+		out.put('\n');
+		output2file("Value: ", out);
+		print("\n");
+		print("\nEnter a integer value associated with this name.\n");
+		for (char c = _getch(); c != 13; c = _getch())
 		{
-			names2console(in,out);
+			_putch(c);
+			out.put(c);
 		}
+		out.put('\n');
+		out.put('\n');
+		print("\n\n");
+		print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	}
+	if (_getch() == 'p')
+	{
+		name2console(in,out);
+	}
+
+	//Closes Application
+	while (!_kbhit() || _getch() != 'q');
 	return 0;
 }

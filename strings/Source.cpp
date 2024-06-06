@@ -99,7 +99,7 @@ int main()
 			}
 			out.put('\n');
 			print("\n");
-			print("Enter a value associated with this name.\n");
+			print("Enter a integer value associated with this name.\n");
 			for (char c = _getch(); c != 13; c = _getch())
 			{
 				_putch(c);
@@ -109,6 +109,10 @@ int main()
 			out.put('\n');
 			print("\n\n");
 			print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+		}
+		if (_getch() == 'p')
+		{
+
 		}
 	}
 	return 0;

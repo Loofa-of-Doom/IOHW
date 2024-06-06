@@ -82,9 +82,33 @@ namespace chili
 int main()
 {
 	using namespace chili;
-	std::ifstream in("HW4.txt", std::ios::binary);
+
+	std::ofstream out("ppl1.txt", std::ios::binary);
+	std::ifstream in("ppl1.txt", std::ios::binary);
+
+	print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+	if (_getch() == 'a')
+	{
+		print("Enter a name.\n");
+		for (char c = _getch(); c != 13; c = _getch())
+		{
+			_putch(c);
+			out.put(c);
+		}
+		print("\n");
+		print("Enter a value associated with this name.\n");
+		for (char c = _getch(); c != 13; c = _getch())
+		{
+			_putch(c);
+			out.put(c);
+		}
+	}
 	
-	print("\nAdd a name.");
+	if (_getch() == 'q')
+	{
+		print("\nPress any key to close the window.");
+	}
+
 	while (!_kbhit());
 	return 0;
 }

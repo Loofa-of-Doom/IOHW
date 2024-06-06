@@ -86,7 +86,7 @@ int main()
 	std::ofstream out("ppl1.txt", std::ios::binary);
 	std::ifstream in("ppl1.txt", std::ios::binary);
 
-	print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+	print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	while (_getch() != 'q')
 	{
 		if (_getch() == 'a')
@@ -97,6 +97,7 @@ int main()
 				_putch(c);
 				out.put(c);
 			}
+			out.put('\n');
 			print("\n");
 			print("Enter a value associated with this name.\n");
 			for (char c = _getch(); c != 13; c = _getch())
@@ -104,6 +105,10 @@ int main()
 				_putch(c);
 				out.put(c);
 			}
+			out.put('\n');
+			out.put('\n');
+			print("\n\n");
+			print("Press Enter - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 		}
 	}
 	return 0;

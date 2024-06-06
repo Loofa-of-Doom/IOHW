@@ -87,28 +87,24 @@ int main()
 	std::ifstream in("ppl1.txt", std::ios::binary);
 
 	print("(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
-	if (_getch() == 'a')
+	while (_getch() != 'q')
 	{
-		print("Enter a name.\n");
-		for (char c = _getch(); c != 13; c = _getch())
+		if (_getch() == 'a')
 		{
-			_putch(c);
-			out.put(c);
-		}
-		print("\n");
-		print("Enter a value associated with this name.\n");
-		for (char c = _getch(); c != 13; c = _getch())
-		{
-			_putch(c);
-			out.put(c);
+			print("Enter a name.\n");
+			for (char c = _getch(); c != 13; c = _getch())
+			{
+				_putch(c);
+				out.put(c);
+			}
+			print("\n");
+			print("Enter a value associated with this name.\n");
+			for (char c = _getch(); c != 13; c = _getch())
+			{
+				_putch(c);
+				out.put(c);
+			}
 		}
 	}
-	
-	if (_getch() == 'q')
-	{
-		print("\nPress any key to close the window.");
-	}
-
-	while (!_kbhit());
 	return 0;
 }

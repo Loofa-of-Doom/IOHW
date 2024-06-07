@@ -1,6 +1,3 @@
-g
-Value: h
-
-hi
-Value: r
+fool
+Value: 3
 

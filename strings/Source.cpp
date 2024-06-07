@@ -110,17 +110,17 @@ int main()
 	std::ofstream out("ppl1.txt", std::ios::binary);
 	std::ifstream in("ppl1.txt", std::ios::binary);
 
-	print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+	print("\n(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 	
-	char c = _getch();
-	while (c != 'q')
+	char input = _getch();
+	while (input != 'q')
 	{
 		//Checks to see if one of the given options were chosen
-		while ((c != 'l') && (c != 's') && (c != 'a') && (c != 'q') && (c != 'p'))
+		while ((input != 'l') && (input != 's') && (input != 'a') && (input != 'q') && (input != 'p'))
 		{
-			c = _getch();
+			input = _getch();
 		}
-		switch (c)
+		switch (input)
 		{
 		case 'a':
 			print("\nEnter a name.\n");
@@ -141,13 +141,13 @@ int main()
 			out.put('\n');
 			out.put('\n');
 			print("\n\n");
-			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
-			c = _getch();
+			print("\n(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			input = _getch();
 			break;
 		case 'p':
 			name2console(in, out);
-			print("\nPress Enter to start input - (l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
-			c = _getch();
+			print("\n(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
+			input = _getch();
 			break;
 		case'q':
 			break;

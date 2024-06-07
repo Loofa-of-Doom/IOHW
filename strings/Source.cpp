@@ -78,6 +78,7 @@ namespace chili
 		*buf = 0;
 		strrev(pStart);
 	}
+
 	void output2file(const char* string, std::ofstream& out)
 	{
 		for (; *string != 0; string++)
@@ -86,22 +87,53 @@ namespace chili
 			out.put(c);
 		}
 	}
-	void name2console(std::ifstream& in, std::ofstream& out)
-	{	
-		out.flush();
-		//in.seekg(0);
-		/*int cursorPos = in.tellg();
-		char test = in.get();*/
-
-		for (char c = in.get(); c > 64 && c < 123; c = in.get())
+	
+	//takes number input from user and prints that amount in '='
+	void printInt2Equal(int n)
+	{
+		for (int i = 0; i < n; i++)
 		{
-			_putch(c);
+			_putch('=');
 		}
 	}
-	/*bool findValue(std::ifstream& in)
-	{
 
-	}*/
+	void printGraph(std::ifstream& in, std::ofstream& out)
+	{	
+		const int digitMax = 8;
+		char intString[digitMax];
+		bool intAlert = false;
+
+		// i fills up intString array in loop below
+		int i = 0;
+		out.flush();
+
+		for (char c = in.get(); in.good(); c = in.get())
+		{
+			_putch(c);
+			//checks if in.get() returns a digit char, then fills up intString with chars
+			for (char digit = c; digit > 47 && digit < 58; digit = in.get())
+			{
+				intString[i] = digit;
+				intAlert = true;
+				i++;
+			}
+			if (intAlert)
+			{
+				int strInt = str2int(reinterpret_cast<const char*>(&intString));
+				print(" | ");
+				printInt2Equal(strInt);
+				intAlert = false;
+				//Resets array and "i" variable in prepartion for the next value input
+				for (int i = 0; i < digitMax; i++)
+				{
+					intString[i] = 0;
+				}
+				i = 0;
+			}
+
+		}
+	}
+	
 }
 int main()
 {
@@ -129,8 +161,6 @@ int main()
 				_putch(c);
 				out.put(c);
 			}
-			out.put('\n');
-			output2file("Value: ", out);
 			print("\n");
 			print("\nEnter a integer value associated with this name.\n");
 			for (char c = _getch(); c != 13; c = _getch())
@@ -145,7 +175,7 @@ int main()
 			input = _getch();
 			break;
 		case 'p':
-			name2console(in, out);
+			printGraph(in, out);
 			print("\n(l)oad (s)ave (a)dd (q)uit or (p)rint?\n");
 			input = _getch();
 			break;
